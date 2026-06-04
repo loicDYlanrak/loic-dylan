@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #012FE9;
+  --color-brand-cyan: #80E5FA;
+  --color-brand-blue: #70D6F5;
+  --color-brand-cream: #F4F1B2;
+  --color-brand-gold: #F6CF5A;
+  --color-brand-dark: #050A1A;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom utilities & premium glowing styles */
+@utility glow-cyan {
+  box-shadow: 0 0 20px rgba(128, 229, 250, 0.25);
+}
+
+@utility glow-cyan-heavy {
+  box-shadow: 0 0 35px rgba(128, 229, 250, 0.45);
+}
+
+@utility glow-blue {
+  box-shadow: 0 0 20px rgba(1, 47, 233, 0.3);
+}
+
+@utility glow-gold {
+  box-shadow: 0 0 20px rgba(246, 207, 90, 0.25);
+}
+
+@utility flow-grid {
+  background-image: 
+    linear-gradient(rgba(1, 47, 233, 0.06) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgba(1, 47, 233, 0.06) 1.5px, transparent 1.5px);
+  background-size: 60px 60px;
+}
+
+@utility flow-radial {
+  background: radial-gradient(circle at 50% 50%, transparent 20%, #050A1A 85%);
+}
+
+/* Standard HTML structure overrides */
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-brand-dark);
+  color: var(--color-brand-cream);
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar matching the dark futuristic slate theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #02050e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #012fe9;
+  border-radius: 99px;
+  border: 2px solid #02050e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #80e5fa;
+}
+
+/* Typewriter animation utilities */
+@keyframes blink {
+  50% { opacity: 0; }
+}
+.typewriter-cursor {
+  animation: blink 0.8s infinite;
+}
+
+/* Premium micro-interactions and transitions */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transition-tilt {
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Reveal up keyframe scroll utility */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Highly cohesive Light Theme CSS variables overrides */
+body.light-theme {
+  background-color: #F8FAFC; /* Clean, spacious light slate */
+  color: #0F172A; /* Deep slate, high legibility */
+}
+
+body.light-theme p {
+  color: #334155 !important; /* Muted modern gray for body text */
+}
+
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3,
+body.light-theme h4 {
+  color: #0F172A !important;
+}
+
+body.light-theme .text-brand-cream\/50,
+body.light-theme .text-brand-cream\/55,
+body.light-theme .text-brand-cream\/60,
+body.light-theme .text-brand-cream\/70 {
+  color: #475569 !important;
+}
+
+body.light-theme .text-brand-cream\/40 {
+  color: #64748B !important;
+}
+
+body.light-theme #reading-progress-bar {
+  background-image: linear-gradient(to right, #012FE9, #70D6F5, #F6CF5A);
+}
+
+body.light-theme .bg-\[\#020612\]\/50,
+body.light-theme .bg-\[\#020612\]\/60,
+body.light-theme .bg-\[\#020612\]\/70,
+body.light-theme .bg-\[\#020612\]\/75,
+body.light-theme .bg-\[\#020612\]\/80 {
+  background-color: rgba(255, 255, 255, 0.82) !important;
+  border-color: rgba(1, 47, 233, 0.12) !important;
+}
+
+body.light-theme .bg-\[\#050A1A\]\/80,
+body.light-theme .bg-\[\#050A1A\]\/95 {
+  background-color: rgba(241, 245, 249, 0.95) !important;
+  border-color: rgba(1, 47, 233, 0.12) !important;
+}
+
+body.light-theme .bg-\[\#050A1A\] {
+  background-color: #E2E8F0 !important;
+}
+
+body.light-theme #reading-progress-bar {
+  opacity: 1;
+}
+
+body.light-theme font-mono {
+  color: #012FE9 !important;
+}
+
