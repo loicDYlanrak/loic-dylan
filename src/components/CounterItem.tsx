@@ -4,6 +4,7 @@
  */
 
 import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'motion/react';
 import { CounterStat } from '../types';
 
 interface CounterItemProps {
@@ -62,8 +63,12 @@ export default function CounterItem({ stat }: CounterItemProps) {
   }, [hasTriggered, stat.targetNumber]);
 
   return (
-    <div
+    <motion.div
       ref={containerRef}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6 }}
       className="p-5 md:p-6 bg-[#020612]/50 border border-brand-primary/10 rounded-xl hover:border-brand-cyan/20 transition-colors shadow-sm backdrop-blur-sm"
     >
       <div className="flex items-baseline justify-center md:justify-start gap-1">
@@ -80,6 +85,6 @@ export default function CounterItem({ stat }: CounterItemProps) {
       <p className="text-[10px] text-brand-cream/60 leading-relaxed mt-1">
         {stat.subtitle}
       </p>
-    </div>
+    </motion.div>
   );
 }

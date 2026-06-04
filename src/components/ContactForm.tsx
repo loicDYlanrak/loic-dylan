@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import { 
   Send, 
   Mail, 
@@ -88,7 +89,14 @@ export default function ContactForm() {
   };
 
   return (
-    <div id="contact-wrapper" className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto">
+    <motion.div 
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6 }}
+      id="contact-wrapper" 
+      className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto"
+    >
       
       {/* 1. Left Grid Column: Professional Contact Cards & Socials */}
       <div className="lg:col-span-5 space-y-6 flex flex-col justify-between">
@@ -366,6 +374,6 @@ export default function ContactForm() {
         </form>
       </div>
 
-    </div>
+    </motion.div>
   );
 }

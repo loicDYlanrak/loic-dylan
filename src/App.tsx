@@ -4,6 +4,7 @@
  */
 
 import { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import { 
   ArrowUp, 
   Terminal, 
@@ -138,54 +139,58 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 text-center space-y-8">
             
             {/* Introductory Pill */}
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               id="hero-badge"
-              className={`inline-flex items-center gap-1.5 px-4 fly-badge py-1.5 rounded-full bg-brand-primary/15 border border-brand-cyan/20 backdrop-blur-sm shadow-[0_0_15px_rgba(1,47,233,0.15)] transition-all duration-1000 ${
-                isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
-              }`}
+              className="inline-flex items-center gap-1.5 px-4 fly-badge py-1.5 rounded-full bg-brand-primary/15 border border-brand-cyan/20 backdrop-blur-sm shadow-[0_0_15px_rgba(1,47,233,0.15)]"
             >
               <Terminal className="w-3.5 h-3.5 text-brand-cyan" />
               <span className="font-mono text-[10px] md:text-xs font-bold uppercase tracking-wider text-brand-cyan">
                 Concepteur Développeur Académique
               </span>
               <div className="w-1.5 h-1.5 rounded-full bg-brand-gold animate-ping ml-1" />
-            </div>
+            </motion.div>
 
             {/* Main Primary Name Title Display */}
             <div className="space-y-3">
-              <h1
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                 id="hero-name"
-                className={`font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase tracking-tight text-white transition-all duration-1000 delay-100 ${
-                  isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}
+                className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase tracking-tight text-white"
                 style={{ lineHeight: '1.1' }}
               >
                 Fehizoro Loïc Dylan
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-brand-cyan to-brand-gold font-black mt-2">
                   Rakotoarivony
                 </span>
-              </h1>
+              </motion.h1>
               
               {/* Animated Typed Tagline container */}
-              <div
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.6 }}
                 id="hero-tagline-container"
-                className={`h-12 flex items-center justify-center text-sm md:text-base font-mono font-bold text-brand-blue tracking-wide transition-all duration-1000 delay-200 ${
-                  isLoaded ? 'opacity-100' : 'opacity-0'
-                }`}
+                className="h-12 flex items-center justify-center text-sm md:text-base font-mono font-bold text-brand-blue tracking-wide"
               >
                 <span className="text-center">
                   {typedText}
                   <span className="text-brand-gold font-black typewriter-cursor">|</span>
                 </span>
-              </div>
+              </motion.div>
             </div>
 
             {/* Core Action CTAs Buttons */}
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
               id="hero-actions"
-              className={`flex flex-wrap items-center justify-center gap-4 pt-4 transition-all duration-1000 delay-300 ${
-                isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}
+              className="flex flex-wrap items-center justify-center gap-4 pt-4"
             >
               <button
                 onClick={() => handleScrollToSection('projects')}
@@ -201,20 +206,21 @@ export default function App() {
               >
                 Me contacter
               </button>
-            </div>
+            </motion.div>
 
             {/* Scroll Indicator Icon */}
-            <button
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1 }}
               onClick={() => handleScrollToSection('about')}
-              className={`absolute bottom-6 left-1/2 -translate-x-1/2 p-2 rounded-full border border-brand-cyan/15 hover:border-brand-cyan/50 text-brand-cyan hover:text-white hover:bg-brand-primary/10 transition-all duration-1000 delay-500 cursor-pointer animate-bounce ${
-                isLoaded ? 'opacity-100' : 'opacity-0'
-              }`}
+              className="absolute bottom-6 left-1/2 -translate-x-1/2 p-2 rounded-full border border-brand-cyan/15 hover:border-brand-cyan/50 text-brand-cyan hover:text-white hover:bg-brand-primary/10 transition-all cursor-pointer animate-bounce"
               aria-label="Faire défiler vers le bas"
             >
               <div className="w-5 h-5 flex flex-col items-center justify-center text-xs font-bold">
                 ↓
               </div>
-            </button>
+            </motion.button>
 
           </div>
         </section>

@@ -3,7 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'motion/react';
 import { Database, Code, Layers, Wrench, ChevronRight } from 'lucide-react';
 import { SKILL_GROUPS } from '../data';
 
@@ -48,16 +49,24 @@ export default function SkillsGrid() {
   };
 
   return (
-    <div
+    <motion.div
       id="skills-interaction-container"
       ref={containerRef}
       className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ staggerChildren: 0.2 }}
     >
       {SKILL_GROUPS.map((group, gIdx) => (
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
           key={group.category}
           id={`skill-card-${gIdx}`}
-          className="relative bg-[#020612]/60 border border-brand-primary/10 rounded-xl p-6 hover:border-brand-cyan/25 transition-all duration-300 shadow-md backdrop-blur-sm group"
+          className="relative bg-[#020612]/60 border border-brand-primary/10 rounded-xl p-6 hover:border-brand-cyan/25 transition-[border,box-shadow,color] duration-500 shadow-md backdrop-blur-sm group"
         >
           {/* Subtle upper background glow */}
           <div className="absolute top-0 right-0 w-24 h-24 bg-brand-primary/5 rounded-full filter blur-xl group-hover:bg-brand-cyan/10 transition-all duration-300" />
@@ -94,8 +103,8 @@ export default function SkillsGrid() {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }

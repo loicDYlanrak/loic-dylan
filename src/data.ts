@@ -15,8 +15,8 @@ export const PERSONAL_INFO = {
   phone: "+261 38 89 013 38",
   github: "https://github.com/Dylan-Loic", // Fallback standard
   linkedin: "https://linkedin.com",
-  bio: "Étudiant en troisième année de Licence Informatique passionné par le développement logiciel, la conception robuste de bases de données et l'analyse de systèmes complexes. Structuré, autonome et avide de défis techniques, je combine une solide logique algorithmique et un savoir-faire approfondi en modélisation MERISE/UML et en architectures SQL/NoSQL pour bâtir des logiciels d'entreprise (ERP) performants, fluides et extensibles.",
-  targetStage: "À la recherche d'un stage de mémoire de fin d'études axé sur l'administration de bases de données, l'analyse métier, ou le développement d'applications d'envergure."
+  bio: "Je suis un futur Ingénieur Logiciel passionné par la conception robuste de systèmes d'information, les mathématiques algorithmiques et la création de bases de données hautement optimisées. Mon parcours universitaire à l'ITU m'a forgé une grande rigueur, une méthodologie de modélisation fiable (MERISE, UML), et une capacité d'adaptation pour développer des solutions fiables, évolutives et performantes (ERP, Moteurs SGBD customisés). \n\nJe reste focalisé sur la création d'architectures saines (orientées 3NF, avec des temps de latence minimisés) mais je maîtrise également les rouages de la création d'interfaces utilisateurs claires en React et Tailwind CSS, offrant ainsi une expertise Full-Stack complète.",
+  targetStage: "Je recherche activement un stage ou une mission orientée conception logicielle, administration de bases de données complexes, ou analyse backend pour exprimer mon potentiel d'architecte de systèmes."
 };
 
 export const COUNTER_STATS: CounterStat[] = [
@@ -287,10 +287,10 @@ export const TIMELINE_DATA: TimelineItem[] = [
     description: "Création intégrale d'un système d'information de vente en ligne et de coordination des livraisons.",
     type: "professional",
     details: [
-      "Écriture d'un catalogue produit fluide avec indexation rapide",
-      "Mise en place de triggers d'ajustement automatique de stock lors des retours clients",
-      "Expérience utilisateur soignée et administration des commandes",
-      "Modélisation de schémas relationnels relationnelles normalisés normés en 3NF"
+      "Création d'un catalogue produit interactif avec gestion avancée des paniers",
+      "Mise en place de triggers d'ajustement automatique de stock et gestion des paiements virtuels",
+      "Expérience utilisateur réactive (Tailwind CSR) et administration backend centralisée",
+      "Élaboration de schémas de bases de données SQL robustes et normalisés (3NF)"
     ],
     tags: ["Laravel", "PHP", "MySQL", "Tailwind CSS", "Conception UI/UX"]
   },

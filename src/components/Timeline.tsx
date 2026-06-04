@@ -4,6 +4,7 @@
  */
 
 import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'motion/react';
 import { Calendar, GraduationCap, Briefcase, Award, ArrowUpRight } from 'lucide-react';
 import { TIMELINE_DATA } from '../data';
 import { TimelineItem } from '../types';
@@ -15,54 +16,38 @@ interface ScrollRevealItemProps {
 }
 
 function ScrollRevealItem({ item, idx }: ScrollRevealItemProps) {
-  const elementRef = useRef<HTMLDivElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -10% 0px' }
-    );
-
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   const isAcademic = item.type === 'academic';
   const isLeft = idx % 2 === 0;
 
   return (
-    <div
-      ref={elementRef}
-      className={`relative flex flex-col md:flex-row items-stretch mb-12 md:mb-16 transition-all duration-800 ease-out ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-      } ${isLeft ? 'md:flex-row-reverse' : ''}`}
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.7, delay: idx * 0.1, type: "spring", stiffness: 100 }}
+      className={`relative flex flex-col md:flex-row items-stretch mb-12 md:mb-16 ${isLeft ? 'md:flex-row-reverse' : ''}`}
     >
       {/* 1. Spacing helper columns for Desktop mirroring */}
       <div className="hidden md:block w-1/2" />
 
       {/* 2. central marker icon */}
-      <div className="absolute left-4 md:left-1/2 top-4 -translate-x-1/2 z-10 flex items-center justify-center">
+      <motion.div 
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, delay: 0.2 + idx * 0.1 }}
+        className="absolute left-4 md:left-1/2 top-4 -translate-x-1/2 z-10 flex items-center justify-center"
+      >
         <div
-          className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-500 bg-[#050A1A] ${
-            isVisible 
-              ? isAcademic 
+          className={`w-10 h-10 rounded-full border flex items-center justify-center bg-[#050A1A] ${
+            isAcademic 
                 ? 'border-brand-cyan text-brand-cyan shadow-[0_0_15px_rgba(128,229,250,0.4)]'
                 : 'border-brand-gold text-brand-gold shadow-[0_0_15px_rgba(246,207,90,0.4)]'
-              : 'border-brand-primary/20 text-brand-cream/40'
           }`}
         >
           {isAcademic ? <GraduationCap className="w-5 h-5" /> : <Briefcase className="w-4 h-4" />}
         </div>
-      </div>
+      </motion.div>
 
       {/* 3. Outer timeline card container */}
       <div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-8">
@@ -124,7 +109,7 @@ function ScrollRevealItem({ item, idx }: ScrollRevealItemProps) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

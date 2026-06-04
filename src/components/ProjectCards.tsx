@@ -4,6 +4,7 @@
  */
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { 
   ArrowRight, 
   ExternalLink, 
@@ -81,19 +82,28 @@ export default function ProjectCards() {
       </div>
 
       {/* Grid of Projects */}
-      <div 
+      <motion.div 
+        layout
         id="projects-grid" 
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2"
       >
-        {filteredProjects.map((project) => (
-          <div
-            key={project.id}
-            id={`project-card-${project.id}`}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => setActiveModalProject(project)}
-            className="group relative bg-[#020612]/60 rounded-xl border border-brand-primary/10 hover:border-brand-cyan/40 p-6 flex flex-col justify-between transition-tilt cursor-pointer backdrop-blur-md overflow-hidden active:scale-95"
-          >
+        <AnimatePresence mode="popLayout">
+          {filteredProjects.map((project) => (
+            <motion.div
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.4 }}
+              key={project.id}
+              id={`project-card-${project.id}`}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              onClick={() => setActiveModalProject(project)}
+              className="group relative bg-[#020612]/60 rounded-xl border border-brand-primary/10 hover:border-brand-cyan/40 p-6 flex flex-col justify-between transition-[border,box-shadow,background-color] duration-500 cursor-pointer backdrop-blur-md overflow-hidden active:scale-95"
+            >
             {/* Upper Corner Premium Ribbon indicator */}
             {project.isPremium && (
               <div 
@@ -155,21 +165,30 @@ export default function ProjectCards() {
                 <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform" />
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
 
       {/* Extreme High-End Modal Detail Panel (Full-screen Overlay) */}
+      <AnimatePresence>
       {activeModalProject && (
-        <div
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           id="project-detail-modal"
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#050A1A]/95 overflow-hidden backdrop-blur-lg"
           onClick={() => setActiveModalProject(null)}
         >
           {/* Main Modal Panel */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="relative w-full max-w-4xl bg-[#020612] border-2 border-brand-cyan/20 glow-cyan rounded-2xl overflow-y-auto max-h-[90vh] md:max-h-[85vh] p-6 md:p-8 shadow-2xl "
-            onClick={(e) => e.stopPropagation()} // Stop bubble up dismiss
+            onClick={(e: React.MouseEvent) => e.stopPropagation()} // Stop bubble up dismiss
           >
             {/* Decorative Grid Mesh */}
             <div className="absolute inset-0 flow-grid opacity-10 pointer-events-none" />
@@ -363,9 +382,10 @@ export default function ProjectCards() {
               </a>
             </div>
 
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </div>
   );
 }
