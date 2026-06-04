@@ -113,23 +113,62 @@ body.light-theme p {
 body.light-theme h1,
 body.light-theme h2,
 body.light-theme h3,
-body.light-theme h4 {
+body.light-theme h4,
+body.light-theme h5 {
   color: #0F172A !important;
 }
 
-body.light-theme .text-brand-cream\/50,
-body.light-theme .text-brand-cream\/55,
-body.light-theme .text-brand-cream\/60,
-body.light-theme .text-brand-cream\/70 {
-  color: #475569 !important;
+/* Fix text-white elements inside cards and body elements */
+body.light-theme span.text-white,
+body.light-theme h3.text-white,
+body.light-theme h4.text-white,
+body.light-theme .text-white:not(button):not(a):not(.bg-brand-primary *):not(.bg-brand-gold *):not(.fly-badge *) {
+  color: #0F172A !important;
 }
 
-body.light-theme .text-brand-cream\/40 {
-  color: #64748B !important;
+/* Ensure the typewriter and text loops are fully legible, matching brand blue */
+body.light-theme #hero-tagline-container span {
+  color: #012FE9 !important;
 }
 
-body.light-theme #reading-progress-bar {
-  background-image: linear-gradient(to right, #012FE9, #70D6F5, #F6CF5A);
+/* Fix Hero Pill introductory Badge */
+body.light-theme #hero-badge {
+  background-color: rgba(1, 47, 233, 0.08) !important;
+  border-color: rgba(1, 47, 233, 0.2) !important;
+}
+
+body.light-theme #hero-badge span,
+body.light-theme #hero-badge svg {
+  color: #012FE9 !important;
+}
+
+/* Overwrite the dark fade gradient at the bottom of the hero section */
+body.light-theme .from-\[\#050A1A\],
+body.light-theme .from-\[\#050a1a\] {
+  background-image: linear-gradient(to top, #F8FAFC, transparent) !important;
+}
+
+/* Override the radial grid vignette to fade to light color instead of dark */
+body.light-theme .flow-radial {
+  background: radial-gradient(circle at 50% 50%, transparent 20%, #F8FAFC 85%) !important;
+}
+
+/* Handle all dark elements and wrappers */
+body.light-theme .bg-\[\#050A1A\],
+body.light-theme .bg-\[\#050a1a\] {
+  background-color: #F8FAFC !important;
+}
+
+body.light-theme .bg-\[\#02050e\],
+body.light-theme .bg-\[\#02050e\]\/90,
+body.light-theme .bg-\[\#02050e\]\/95,
+body.light-theme .bg-\[\#02050e\]\/80 {
+  background-color: #E2E8F0 !important;
+}
+
+body.light-theme .bg-\[\#020612\] {
+  background-color: #FFFFFF !important;
+  border-color: rgba(1, 47, 233, 0.15) !important;
 }
 
 body.light-theme .bg-\[\#020612\]\/50,
@@ -137,25 +176,147 @@ body.light-theme .bg-\[\#020612\]\/60,
 body.light-theme .bg-\[\#020612\]\/70,
 body.light-theme .bg-\[\#020612\]\/75,
 body.light-theme .bg-\[\#020612\]\/80 {
-  background-color: rgba(255, 255, 255, 0.82) !important;
-  border-color: rgba(1, 47, 233, 0.12) !important;
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-color: rgba(1, 47, 233, 0.15) !important;
 }
 
 body.light-theme .bg-\[\#050A1A\]\/80,
-body.light-theme .bg-\[\#050A1A\]\/95 {
+body.light-theme .bg-\[\#050a1a\]\/80,
+body.light-theme .bg-\[\#050A1A\]\/90,
+body.light-theme .bg-\[\#050a1a\]\/90,
+body.light-theme .bg-\[\#050A1A\]\/95,
+body.light-theme .bg-\[\#050a1a\]\/95 {
   background-color: rgba(241, 245, 249, 0.95) !important;
+  border-color: rgba(1, 47, 233, 0.15) !important;
+}
+
+/* Ensure form controls and placeholders are completely visible */
+body.light-theme input,
+body.light-theme textarea,
+body.light-theme select {
+  color: #0F172A !important;
+  background-color: #FFFFFF !important;
+  border-color: rgba(1, 47, 233, 0.2) !important;
+}
+
+body.light-theme input::placeholder,
+body.light-theme textarea::placeholder {
+  color: #475569 !important;
+  opacity: 0.8;
+}
+
+/* Highlight custom tags inside lists and timelines */
+body.light-theme .bg-\[\#050A1A\].text-brand-blue,
+body.light-theme span.bg-\[\#050A1A\] {
+  background-color: rgba(1, 47, 233, 0.08) !important;
+  color: #012FE9 !important;
   border-color: rgba(1, 47, 233, 0.12) !important;
 }
 
-body.light-theme .bg-\[\#050A1A\] {
-  background-color: #E2E8F0 !important;
+/* Overrides for text categories */
+body.light-theme .text-brand-cream\/30,
+body.light-theme .text-brand-cream\/40,
+body.light-theme .text-brand-cream\/50,
+body.light-theme .text-brand-cream\/55,
+body.light-theme .text-brand-cream\/60,
+body.light-theme .text-brand-cream\/70,
+body.light-theme .text-brand-cream\/80 {
+  color: #334155 !important;
 }
 
-body.light-theme #reading-progress-bar {
-  opacity: 1;
+body.light-theme .text-brand-cream\/30 {
+  color: #64748B !important;
 }
 
-body.light-theme font-mono {
+body.light-theme .text-brand-cream\/40 {
+  color: #475569 !important;
+}
+
+body.light-theme .font-mono {
+  color: #012FE9 !important;
+}
+
+/* Fix Hero section custom transparent button in light theme */
+body.light-theme button.bg-transparent:not(#mobile-menu-toggle),
+body.light-theme a.bg-transparent {
+  color: #012FE9 !important;
+  border-color: rgba(1, 47, 233, 0.4) !important;
+}
+body.light-theme button.bg-transparent:not(#mobile-menu-toggle):hover,
+body.light-theme a.bg-transparent:hover {
+  background-color: rgba(1, 47, 233, 0.08) !important;
+  color: #012FE9 !important;
+}
+
+/* Ensure brand primary buttons can override general font color */
+body.light-theme button.bg-brand-primary,
+body.light-theme a.bg-brand-primary,
+body.light-theme .bg-brand-primary,
+body.light-theme .bg-brand-primary * {
+  color: #FFFFFF !important;
+}
+
+/* Fix project cards outline filtering */
+body.light-theme #project-filters button:not(.bg-brand-primary) {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  color: #334155 !important;
+  border-color: rgba(1, 47, 233, 0.15) !important;
+}
+body.light-theme #project-filters button:not(.bg-brand-primary):hover {
+  background-color: rgba(1, 47, 233, 0.05) !important;
+  color: #012FE9 !important;
+  border-color: #012FE9 !important;
+}
+
+/* Fix desktop menu navigation */
+body.light-theme #desktop-navigation button:not(.text-brand-gold) {
+  color: #475569 !important;
+}
+body.light-theme #desktop-navigation button:not(.text-brand-gold):hover {
+  color: #012FE9 !important;
+  background-color: rgba(1, 47, 233, 0.05) !important;
+}
+body.light-theme #desktop-navigation button.text-brand-gold {
+  color: #012FE9 !important;
+  background-color: rgba(1, 47, 233, 0.08) !important;
+  border-bottom-color: #012FE9 !important;
+}
+
+/* Fix specific navbar elements toggles */
+body.light-theme #theme-toggle-desktop,
+body.light-theme #theme-toggle-mobile {
+  background-color: rgba(1, 47, 233, 0.08) !important;
+  color: #012FE9 !important;
+  border-color: rgba(1, 47, 233, 0.2) !important;
+}
+body.light-theme header button:not(.bg-brand-primary):not(#theme-toggle-desktop):not(#theme-toggle-mobile):not(#mobile-menu-toggle) {
+  color: #012FE9 !important;
+  border-color: rgba(1, 47, 233, 0.4) !important;
+}
+body.light-theme header button:not(.bg-brand-primary):not(#theme-toggle-desktop):not(#theme-toggle-mobile):not(#mobile-menu-toggle):hover {
+  background-color: rgba(1, 47, 233, 0.08) !important;
+}
+
+/* Fix mobile menu drawer scroll button text colors */
+body.light-theme #mobile-menu-drawer button {
+  color: #0F172A !important;
+}
+body.light-theme #mobile-menu-drawer button:hover {
+  background-color: rgba(1, 47, 233, 0.08) !important;
+}
+
+/* Fix timeline center item dots icon background circles */
+body.light-theme .rounded-full.border.bg-\[\#050A1A\] {
+  background-color: #FFFFFF !important;
+}
+
+/* Fix footer layout texts */
+body.light-theme #main-footer p,
+body.light-theme #main-footer span,
+body.light-theme #main-footer button {
+  color: #334155 !important;
+}
+body.light-theme #main-footer button:hover {
   color: #012FE9 !important;
 }
 
